@@ -30,11 +30,6 @@ param(
 
 # AutoBuild Properties
 
-## Check we have Convert-WindowsImage.ps1
-If (-not (Test-Path -Path .\Convert-WindowsImage.ps1 -PathType Leaf)) {
-    Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/MicrosoftDocs/Virtualization-Documentation/master/hyperv-tools/Convert-WindowsImage/Convert-WindowsImage.ps1' -OutFile .\Convert-WindowsImage.ps1
-}
-
 ## Random ID
 $BuildID = (Get-Random)
 
