@@ -145,7 +145,7 @@ $writer.Dispose()
 Write-Host "[$BuildID] - $(Get-date) - Mixing $Name with $WindowsEdition" -ForegroundColor Yellow
 
 ## Import Convert-WindowsImage.ps1 function for use
-.\Convert-WindowsImage.ps1
+.\$PWD\Convert-WindowsImage.ps1
 
 ## Compile Image
 Convert-WindowsImage -SourcePath $WindowsISO -Edition $WindowsEdition -TempDirectory $TempDirectory -UnattendPath $UnattendPath -SizeBytes $Storage -DiskLayout UEFI -VHDPath $VHDPath -VHDFormat VHDX
