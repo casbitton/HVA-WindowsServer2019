@@ -30,6 +30,11 @@ param(
 
 # AutoBuild Properties
 
+## Check we have Convert-WindowsImage.ps1
+If (-not (Test-Path -Path .\Convert-WindowsImage.ps1 -PathType Leaf)) {
+    Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/MicrosoftDocs/Virtualization-Documentation/master/hyperv-tools/Convert-WindowsImage/Convert-WindowsImage.ps1' -OutFile .\Convert-WindowsImage.ps1
+}
+
 ## Random ID
 $BuildID = (Get-Random)
 
@@ -145,7 +150,7 @@ $writer.Dispose()
 Write-Host "[$BuildID] - $(Get-date) - Mixing $Name with $WindowsEdition" -ForegroundColor Yellow
 
 ## Import Convert-WindowsImage.ps1 function for use
-.\$PWD\Convert-WindowsImage.ps1
+. .\Convert-WindowsImage.ps1
 
 ## Compile Image
 Convert-WindowsImage -SourcePath $WindowsISO -Edition $WindowsEdition -TempDirectory $TempDirectory -UnattendPath $UnattendPath -SizeBytes $Storage -DiskLayout UEFI -VHDPath $VHDPath -VHDFormat VHDX
